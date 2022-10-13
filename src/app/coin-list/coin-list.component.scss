@@ -55,3 +55,32 @@
     }
     }
 }
+
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  :host ::ng-deep .mat-sort-header-content {
+    color: #fff;
+}
+
+:host ::ng-deep .mat-paginator-outer-container {
+    background-color: rgb(36, 37, 37);
+}
+
+:host ::ng-deep tr.mat-header-row {
+    background-color: #009688;
+}
+
+:host ::ng-deep tr.mat-row {
+    height: 5rem;
+}

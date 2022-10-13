@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, AfterViewInit, ViewChild } from '@angular
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Coin } from '../models/coin.model';
 import { CoinService } from '../services/coin.service';
@@ -24,7 +25,7 @@ export class CoinListComponent implements OnInit, OnDestroy {
   currency!:string;
   coinSub = new Subscription();
 
-  constructor(private coinService: CoinService) { }
+  constructor(private coinService: CoinService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -67,5 +68,10 @@ export class CoinListComponent implements OnInit, OnDestroy {
 
   onGetSignleCoin(id:string){
     this.coinService.getSingleCoin(id)
+  }
+
+  onClickCoin(id:string){
+    this.router.navigateByUrl('/coin-detail/' + id)
+    
   }
 }
