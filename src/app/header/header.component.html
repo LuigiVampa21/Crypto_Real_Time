@@ -1,0 +1,16 @@
+<p>
+  <mat-toolbar>
+    <span>Crypto Real-Time</span>
+    <span class="spacer"></span>
+    <mat-form-field>
+      <mat-select
+        (valueChange)="sendCurrency($event)"
+        class="text-small"
+        [(ngModel)]="selectedCurrency"
+      >
+        <mat-option selected value="USD">USD</mat-option>
+        <mat-option value="EUR">EUR</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-toolbar>
+</p>
