@@ -13,11 +13,18 @@ export class CoinListComponent implements OnInit, OnDestroy {
 
   trendingCoins:Coin[]= [];
   coins:Coin[]= [];
+  currency!:string;
   coinSub = new Subscription();
 
   constructor(private coinService: CoinService) { }
 
   ngOnInit(): void {
+
+    this.coinService.currency$
+      .subscribe((c:string) => {
+        this.currency = c
+      })
+
     //this.coinSub = this.coinService.getAllCoins()
     //   .subscribe(
     //     data => {
