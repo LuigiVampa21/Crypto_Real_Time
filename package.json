@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "chart.js": "^3.9.1",
+    "ng2-charts": "^4.0.1",
     "ngx-bootstrap": "^9.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
