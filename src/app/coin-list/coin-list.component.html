@@ -13,14 +13,31 @@
         direction="left"
       >
         <div class="row">
-
+          <ng-container *ngFor="let trendingCoin of trendingCoins">
+            <div class="col-1">
+              <div class="card">
+                <img
+                  [src]="trendingCoin.image"
+                  class="img-fluid"
+                  width="30rem"
+                  [alt]="trendingCoin.name"
+                />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ trendingCoin.symbol | uppercase }}
+                  <span>{{ trendingCoin.price_change_percentage_24h }}</span>
+                </h5>
+                <p class="card-text">
+                  {{ trendingCoin.current_price | currency }}
+                </p>
+              </div>
+            </div>
+          </ng-container>
         </div>
       </marquee>
     </div>
   </div>
 </div>
 
-
-
-<div class="container">
-</div>
+<div class="container"></div>
