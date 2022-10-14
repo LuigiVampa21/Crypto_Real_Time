@@ -22,27 +22,33 @@ export class CoinListComponent implements OnInit, OnDestroy {
   dataSource!: MatTableDataSource<Coin>;
   trendingCoins:Coin[]= [];
   // coins:Coin[]= [];
-  currency!:string;
+  currency:string = 'USD';
   coinSub = new Subscription();
 
   constructor(private coinService: CoinService, private router:Router) { }
 
   ngOnInit(): void {
-
-    this.coinService.currency$
-      .subscribe((c:string) => {
-        this.currency = c
+    this.initAllCoins()
+    this.initTrendingCoins()
+    
+    this.coinService.onGetCurrency()
+    .subscribe((c:string) => {
+      this.currency = c;
+      this.initAllCoins()
+      this.initTrendingCoins()
       })
-
-    this.coinSub = this.coinService.getAllCoins()
-      .subscribe(
-        data => {
-          this.dataSource = new MatTableDataSource(data);
-          this.dataSource.paginator= this.paginator;
-          this.dataSource.sort = this.sort;       
-        }
+      
+    // this.coinSub = this.coinService.getAllCoins(this.currency)
+    //   .subscribe(
+    //     data => {
+    //       console.log(data);
+          
+    //       this.dataSource = new MatTableDataSource(data);
+    //       this.dataSource.paginator= this.paginator;
+    //       this.dataSource.sort = this.sort;       
+    //     }
         
-      )
+    //   )
 
       // this.coinSub =  this.coinService.getTrendingCoins()
       //   .subscribe(
@@ -62,12 +68,35 @@ export class CoinListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    // this.coinSub.unsubscribe()
+    this.coinSub.unsubscribe()
+  }
+
+  initAllCoins(){
+    this.coinSub = this.coinService.getAllCoins(this.currency)
+    .subscribe(
+      data => {
+        // console.log(data);
+        
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator= this.paginator;
+        this.dataSource.sort = this.sort;       
+      }
+      
+    )
+  }
+
+  initTrendingCoins(){
+     this.coinSub =  this.coinService.getTrendingCoins(this.currency)
+        .subscribe(
+        (data:Coin[]) => {
+          this.trendingCoins = data;          
+        }
+      )
   }
 
 
   onGetSignleCoin(id:string){
-    this.coinService.getSingleCoin(id)
+    this.coinService.getSingleCoin(id, this.currency)
   }
 
   onClickCoin(id:string){

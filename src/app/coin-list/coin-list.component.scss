@@ -8,7 +8,7 @@
     color: black;
         h2{
             font-weight: bold;
-            margin-top: 10%;
+            margin-top: 1%;
             margin-bottom: 1.5rem;
             font-size: 3.75rem;
             line-height: 1.2;
@@ -32,7 +32,7 @@
 }
 
 .col-1{
-    height: 10rem;
+    height: 2rem;
     margin-right: 1.15rem;
 }
 .card{
@@ -43,17 +43,26 @@
     width: 10rem;
     height: 7rem;
     img{
-        width: 7rem;
+        width: 5rem;
         margin: 0 auto;
     }
+}
+.card-body{
     h5{
+    margin-top: -2rem;
+    margin-left: -1rem;
+    width: 5rem;
     font-weight:500;
     text-align: center;
-    p{
-        font-weight: 700;
-        text-align: center;
-    }
-    }
+    display: flex;
+    justify-content: space-around;
+}
+p{
+    margin-top: -0.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+    
 }
 
 table {

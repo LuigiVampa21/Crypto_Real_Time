@@ -9,14 +9,24 @@
           <span class="title">Rank: </span>
           <span class="value">{{ coin.market_cap_rank }}</span> <br />
           <span class="title">Current Price: </span>
-          <span class="value">{{
-            coin.market_data.current_price.usd | currency: currency
-          }}</span>
+          <span class="value"
+            >{{ currency === "USD" ? "$" : " "
+            }}{{
+              currency === "USD"
+                ? coin.market_data.current_price.usd
+                : coin.market_data.current_price.eur
+            }}{{ currency !== "USD" ? "€" : " " }}</span
+          >
           <br />
           <span class="title">Market Cap: </span>
-          <span class="value">{{
-            coin.market_data.market_cap.usd | currency: currency
-          }}</span>
+          <span class="value"
+            >{{ currency === "USD" ? "$" : " "
+            }}{{
+              currency === "USD"
+                ? coin.market_data.market_cap.usd
+                : coin.market_data.market_cap.eur
+            }}{{ currency !== "USD" ? "€" : " " }}</span
+          >
         </div>
       </div>
     </div>
@@ -28,6 +38,20 @@
         [options]="lineChartOptions"
         [type]="lineChartType"
       ></canvas>
+      <div class="d-flex justify-content-around">
+        <button (click)="onChangeDays(1)" class="btn btn-custom">
+          24 hours
+        </button>
+        <button (click)="onChangeDays(30)" class="btn btn-custom">
+          30 days
+        </button>
+        <button (click)="onChangeDays(90)" class="btn btn-custom">
+          90 days
+        </button>
+        <button (click)="onChangeDays(365)" class="btn btn-custom">
+          1 year
+        </button>
+      </div>
     </div>
   </div>
 </div>
