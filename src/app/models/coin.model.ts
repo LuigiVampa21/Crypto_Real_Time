@@ -2,13 +2,11 @@ export interface Coin {
 
     id: string
     name:string
-    // image: {large:string, small:string, thumb:string }
-    image: any
+    image?: any
     symbol:string
     current_price:number
     market_cap_rank: number
     market_data:any
-    // market_cap: {current_price: number}
 
     description: { en: string, fr:string }
     circulating_supply?:number

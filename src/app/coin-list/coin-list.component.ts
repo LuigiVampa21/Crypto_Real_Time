@@ -21,7 +21,6 @@ export class CoinListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['symbol', 'current_price', 'price_change_percentage_24h', 'market_cap'];
   dataSource!: MatTableDataSource<Coin>;
   trendingCoins:Coin[]= [];
-  // coins:Coin[]= [];
   currency:string = 'USD';
   coinSub = new Subscription();
 
@@ -37,25 +36,6 @@ export class CoinListComponent implements OnInit, OnDestroy {
       this.initAllCoins()
       this.initTrendingCoins()
       })
-      
-    // this.coinSub = this.coinService.getAllCoins(this.currency)
-    //   .subscribe(
-    //     data => {
-    //       console.log(data);
-          
-    //       this.dataSource = new MatTableDataSource(data);
-    //       this.dataSource.paginator= this.paginator;
-    //       this.dataSource.sort = this.sort;       
-    //     }
-        
-    //   )
-
-      // this.coinSub =  this.coinService.getTrendingCoins()
-      //   .subscribe(
-      //   (data:Coin[]) => {
-      //     this.trendingCoins = data;          
-      //   }
-      // )
   }
 
   applyFilter(event: Event) {
@@ -74,9 +54,7 @@ export class CoinListComponent implements OnInit, OnDestroy {
   initAllCoins(){
     this.coinSub = this.coinService.getAllCoins(this.currency)
     .subscribe(
-      data => {
-        // console.log(data);
-        
+      data => {        
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator= this.paginator;
         this.dataSource.sort = this.sort;       
