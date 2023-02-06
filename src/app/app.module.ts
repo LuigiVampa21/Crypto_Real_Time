@@ -18,6 +18,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { NgChartsModule } from 'ng2-charts';
 
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 
@@ -41,7 +43,8 @@ import { NgChartsModule } from 'ng2-charts';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    NgChartsModule
+    NgChartsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { CoinService } from '../services/coin.service';
 import { Subscription } from 'rxjs';
 import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -53,7 +54,7 @@ export class CoinDetailComponent implements OnInit, OnDestroy {
   public lineChartType: ChartType = 'line';
 
   
-  constructor(private coinService: CoinService, private route: ActivatedRoute) { }
+  constructor(private coinService: CoinService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
 
@@ -114,5 +115,9 @@ export class CoinDetailComponent implements OnInit, OnDestroy {
           })
        }
      )
+   }
+
+   goBackFn():void{
+    this.location.back();
    }
 }
